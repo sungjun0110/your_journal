@@ -14,7 +14,7 @@ function Journals() {
   const [key, setKey] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:8001/journals", {
+    fetch("https://urjournal-backend.herokuapp.com/journals", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +26,7 @@ function Journals() {
   }, [])
 
   const post = (newJournals) => {
-    fetch("http://localhost:8001/journals", {
+    fetch("https://urjournal-backend.herokuapp.com/journals", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -76,8 +76,8 @@ function Journals() {
       </form>
       {getJournals().map((journal) => (
         <div className="journal">
-          {console.log(journal)}
-          {journal.title}
+          <h2>{journal.title}</h2>
+          <p>{journal.content}</p>
         </div>
       ))}
     </div>

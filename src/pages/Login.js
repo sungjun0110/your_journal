@@ -20,7 +20,7 @@ function Login() {
 
   const login = (e) => {
     e.preventDefault();
-    fetch("http://localhost:8001/login", {
+    fetch("https://urjournal-backend.herokuapp.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

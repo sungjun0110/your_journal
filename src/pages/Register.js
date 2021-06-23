@@ -20,7 +20,7 @@ function Register() {
 
   const register = (e) => {
     e.preventDefault();
-    fetch("http://localhost:8001/register", {
+    fetch("https://urjournal-backend.herokuapp.com/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
