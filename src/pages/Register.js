@@ -20,6 +20,7 @@ function Register() {
 
   const register = (e) => {
     e.preventDefault();
+    if (username === '' || password === '') return;
     fetch("https://urjournal-backend.herokuapp.com/register", {
       method: "POST",
       headers: {

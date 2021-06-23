@@ -75,7 +75,7 @@ function Journals() {
         <button id="save-btn" type="submit">Save</button>
       </form>
       {getJournals().map((journal) => (
-        <div className="journal">
+        <div className="journal" key={getKey}>
           <h2>{journal.title}</h2>
           <p>{journal.content}</p>
         </div>
