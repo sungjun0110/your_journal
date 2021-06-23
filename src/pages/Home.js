@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { CredentialsContext } from '../App';
 
-import Journals from './Jornals';
+import Journals from './Journals';
 
 function Home() {
   const [credentials, setCredentials] = useContext(CredentialsContext);

@@ -20,6 +20,6 @@ label {
   height: 200px;
 }
 
-#save-btn {
-  position: absolute;
+.journal {
+  position: relative;
 }

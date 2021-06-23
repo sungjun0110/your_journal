@@ -3,41 +3,62 @@ import { CredentialsContext } from '../App';
 import './Journals.css';
 import { handleErrors } from './Login';
 
-function Jornals() {
+function Journals() {
+  const [journals, setJournals] = useState([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [date, setDate] = useState("");
   const [credentials,] = useContext(CredentialsContext);
   const [username,] = useState(credentials.username);
   const [error, setError] = useState("");
+  const [key, setKey] = useState(0);
 
   useEffect(() => {
-    console.log(date);
-  }, [date])
+    fetch("http://localhost:8001/journals", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `${username}:${credentials.password}`,
+      },
+    })
+    .then((response) => response.json())
+    .then((journals) => setJournals(journals));
+  }, [])
 
-  const post = (e) => {
-    e.preventDefault();
+  const post = (newJournals) => {
     fetch("http://localhost:8001/journals", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `${username}:${credentials.password}`,
       },
-      body: JSON.stringify({
-        username,
-        title,
-        content,
-        date,
-      }),
+      body: JSON.stringify(newJournals)
     })
       .then(handleErrors)
       .catch((error) => {
         setError(error.message);
       })
-  }
+  };
 
   const addJournal = (e) => {
     e.preventDefault();
-    
+    if (!title || !content || !date) return;
+    const newJournal = { title: title, content: content, date: date };
+    const newJournals = [...journals, newJournal];
+    setJournals(newJournals);
+    setTitle("");
+    setContent("");
+    setDate("");
+    post(newJournals);
+  }
+
+  const getJournals = () => {
+    return journals;
+  }
+
+  const getKey = () => {
+    setKey(key+1);
+    return key;
   }
 
   return (
@@ -53,8 +74,14 @@ function Jornals() {
         <br />
         <button id="save-btn" type="submit">Save</button>
       </form>
+      {getJournals().map((journal) => (
+        <div className="journal">
+          {console.log(journal)}
+          {journal.title}
+        </div>
+      ))}
     </div>
   )
 }
 
-export default Jornals
+export default Journals
