@@ -4,6 +4,7 @@ import './App.css';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import Sidebar from './components/Sidebar';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -29,6 +30,8 @@ function App() {
           </Switch>
         </CredentialsContext.Provider>
       </Router>
+
+      <Sidebar />
     </div>
   );
 }

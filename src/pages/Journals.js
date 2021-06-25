@@ -62,7 +62,7 @@ function Journals() {
   }
 
   return (
-    <div>
+    <div id="journal-div">
       <form id="journal-form" onSubmit={addJournal}>
         <label htmlFor="title-input">Title:</label>
         <input id="title-input" type="text" onChange={(e) => setTitle(e.target.value)} />

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { CredentialsContext } from '../App';
+import "./Home.css";
 
 import Journals from './Journals';
 
@@ -12,7 +13,7 @@ function Home() {
   }
 
   return (
-    <div>
+    <div id="title-div">
       <h1>Hi! {credentials && credentials.username}</h1>
       {credentials && <button onClick={logout}>Logout</button>}
       {!credentials && <Link to='/register'>Register</Link>}

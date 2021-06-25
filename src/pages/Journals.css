@@ -1,3 +1,7 @@
+#journal-div {
+  position: absolute;
+}
+
 #journal-form {
   position: relative;
   width: 1000px;
