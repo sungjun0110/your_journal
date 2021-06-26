@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { CredentialsContext } from '../App';
-import "./Home.css";
+import "./Pages.css";
 
 import Journals from './Journals';
 
@@ -13,7 +13,7 @@ function Home() {
   }
 
   return (
-    <div id="title-div">
+    <div id="page-div">
       <h1>Hi! {credentials && credentials.username}</h1>
       {credentials && <button onClick={logout}>Logout</button>}
       {!credentials && <Link to='/register'>Register</Link>}

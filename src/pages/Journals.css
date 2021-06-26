@@ -1,11 +1,14 @@
 #journal-div {
   position: absolute;
+  left: 50vw;
+  transform: translateX(-50%);
 }
 
 #journal-form {
   position: relative;
-  width: 1000px;
   margin: 0 auto;
+  width: 100vw;
+  max-width: 1000px;
 }
 
 label {
@@ -17,13 +20,17 @@ label {
 
 #title-input {
   width: 300px;
+  border: 1px solid black;
 }
 
 #content-input {
   width: 300px;
   height: 200px;
+  border: 1px solid black;
 }
-
+#date-input {
+  border: 1px solid black;
+}
 .journal {
   position: relative;
 }

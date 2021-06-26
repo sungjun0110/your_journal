@@ -44,10 +44,10 @@ function Login() {
   };
 
   return (
-    <div>
+    <div id="page-div">
       <h1>Login</h1>
       {!!error && (<span style={{color: 'red'}}>{error}</span>)}
-      <form onSubmit={login}>
+      <form id="id-form" onSubmit={login}>
         <input 
           onChange={(e) => setUsername(e.target.value)} 
           placeholder="username" />

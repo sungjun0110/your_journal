@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './SidebarIcon.css'
 
-function SidebarIcon() {
-  const [isClicked, setIsClicked] = useState(false);
-
+function SidebarIcon(props) {
   return (
     <div 
       id="hambergerMenu" 
-      className={isClicked? "clicked" : null} 
-      onClick={() => setIsClicked(!isClicked)}
+      className={props.isClicked? "clicked" : null} 
+      onClick={() => props.setIsClicked(!props.isClicked)}
     >
       <div className="burgerBtn"></div>
     </div>

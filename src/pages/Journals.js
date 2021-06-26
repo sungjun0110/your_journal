@@ -70,7 +70,7 @@ function Journals() {
         <label htmlFor="content-input">Content:</label>
         <textarea id="content-input" type="text" onChange={(e) => setContent(e.target.value)} />
         <br />
-        <input type="date" onChange={(e) => setDate(e.target.value)}></input>
+        <input id="date-input" type="date" onChange={(e) => setDate(e.target.value)}></input>
         <br />
         <button id="save-btn" type="submit">Save</button>
       </form>

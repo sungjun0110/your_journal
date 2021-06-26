@@ -45,10 +45,10 @@ function Register() {
   };
 
   return (
-    <div>
+    <div id="page-div">
       <h1>Register</h1>
       {!!error && (<span style={{color: 'red'}}>{error}</span>)}
-      <form onSubmit={register}>
+      <form id="id-form" onSubmit={register}>
         <input 
           onChange={(e) => setUsername(e.target.value)} 
           placeholder="username" />
