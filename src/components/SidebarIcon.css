@@ -1,15 +1,45 @@
 #hambergerMenu {
-  position: absolute;
-  width: 200px;
-  height: 200px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   transition: all .5s ease-in-out;
 }
-
 .burgerBtn {
-  width: 20px;
-  height: 5px;
+  position: absolute;
+  width: 35px;
+  height: 6px;
   background-color: black;
-  border-radius: 50%;
+  border-radius: 3px;
   transition: all .5s ease-in-out;
+}
+.burgerBtn::before,
+.burgerBtn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 35px;
+  height: 6px;
+  background-color: black;
+  border-radius: 3px;
+  transition: all .5s ease-in-out;
+}
+.burgerBtn::before {
+  transform: translateY(-12px);
+}
+.burgerBtn::after {
+  transform: translateY(12px);
+}
+
+#hambergerMenu.clicked .burgerBtn {
+  background: transparent;
+}
+#hambergerMenu.clicked .burgerBtn::before {
+  transform: rotate(45deg);
+}
+#hambergerMenu.clicked .burgerBtn::after {
+  transform: rotate(-45deg);
 }
