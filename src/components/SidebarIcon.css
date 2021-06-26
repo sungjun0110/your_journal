@@ -1,0 +1,15 @@
+#hambergerMenu {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+}
+
+.burgerBtn {
+  width: 20px;
+  height: 5px;
+  background-color: black;
+  border-radius: 50%;
+  transition: all .5s ease-in-out;
+}

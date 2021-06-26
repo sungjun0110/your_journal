@@ -1,10 +1,12 @@
 import React from 'react'
 import './Sidebar.css'
+import HambergerMenu from './SidebarIcon'
 
 function Sidebar() {
   return (
     <nav id="sidebar">
-      Recent Posts
+      <HambergerMenu />
+      
     </nav>
   )
 }
