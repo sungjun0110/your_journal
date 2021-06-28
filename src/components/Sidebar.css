@@ -1,5 +1,6 @@
 #sidebar {
-  position: relative;
+  position: absolute;
+  top: 0;
   width: 200px;
   height: 100vh;
   box-shadow: 10px 10px 20px rgba(0,0,0,0);
@@ -22,7 +23,7 @@
   position: absolute;
   width: 200px;
   top: 3px;
-  left: 160px;
+  left: 155px;
   transition: all 0.5s ease-in-out;
   z-index: 100;
   transform: translateX(-150px);

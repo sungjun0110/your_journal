@@ -1,14 +1,8 @@
 #journal-div {
-  position: absolute;
-  left: 50vw;
-  transform: translateX(-50%);
 }
 
 #journal-form {
-  position: relative;
-  margin: 0 auto;
-  width: 100vw;
-  max-width: 1000px;
+
 }
 
 label {
@@ -32,5 +26,5 @@ label {
   border: 1px solid black;
 }
 .journal {
-  position: relative;
+  
 }

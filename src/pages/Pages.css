@@ -1,22 +1,24 @@
 #page-div {
-  position: absolute;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 
 #page-div h1 {
-  position: relative;
-  left: 50vw;
-  transform: translateX(-50%);
+
+}
+
+#page-div h3 {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #page-div a {
-  position: relative;
-  left: 50vw;
-  transform: translateX(-50%);
 }
 
 #id-form {
-  position: absolute;
-  left: 50vw;
-  transform: translateX(-50%);
   width: 200px;
 }

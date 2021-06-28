@@ -16,10 +16,9 @@ function Home() {
     <div id="page-div">
       <h1>Hi! {credentials && credentials.username}</h1>
       {credentials && <button onClick={logout}>Logout</button>}
+      {!credentials && <h3>Try <br />id: test<br />password: test</h3>}
       {!credentials && <Link to='/register'>Register</Link>}
-      <br />
       {!credentials && <Link to='/login'>Login</Link>}
-      <br />
       {credentials && <Journals />}
     </div>
   )
