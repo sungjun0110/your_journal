@@ -12,7 +12,7 @@ function Sidebar() {
       </div>
       <nav  id="sidebar" className={isClicked? "clicked" : null}>
         <div id="menuList">
-          <button onClick={() => setIsClicked(false)}>Recent post</button>
+          <button onClick={() => setIsClicked(false)}>Recent Posts</button>
         </div>
       </nav>
     </div>
