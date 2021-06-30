@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { CredentialsContext } from '../App';
 import { handleErrors } from '../pages/Login';
+import './NewPost.css';
 
 function NewPost() {
   const [journals, setJournals] = useState([]);
