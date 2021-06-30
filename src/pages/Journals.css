@@ -1,6 +1,25 @@
 #journal-div {
+  width: 100%;
 }
-
 .journal {
-  
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.journal-btns {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  top: 0;
+  right: 0;
+  height: 30px;
+  width: 80px;
+}
+.journal-btns button {
+  margin-left: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+.journal-btns button:hover {
+  color: red;
 }

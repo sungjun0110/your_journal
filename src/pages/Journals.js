@@ -40,6 +40,10 @@ function Journals() {
         <div className="journal" key={getKey}>
           <h2>{journal.title}</h2>
           <p>{journal.content}</p>
+          <div className="journal-btns">
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
         </div>
       ))}
     </div>

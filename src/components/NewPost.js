@@ -50,7 +50,6 @@ function NewPost() {
     setDate("");
     post(newJournals);
   }
-  
 
   return (
     <form id="journal-form" onSubmit={addJournal}>
