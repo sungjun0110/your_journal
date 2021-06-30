@@ -1,15 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { CredentialsContext } from '../App';
+import { CredentialsContext, CurrentMenuContext } from '../App';
 import './Journals.css';
 import { handleErrors } from './Login';
 import NewPost from '../components/NewPost';
 
 function Journals() {
   const [journals, setJournals] = useState([]);
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [date, setDate] = useState("");
   const [credentials,] = useContext(CredentialsContext);
+  const [currentMenu,] = useContext(CurrentMenuContext);
   const [username,] = useState(credentials.username);
   const [error, setError] = useState("");
   const [key, setKey] = useState(0);
@@ -26,33 +24,6 @@ function Journals() {
     .then((journals) => setJournals(journals));
   }, [])
 
-  const post = (newJournals) => {
-    fetch("https://urjournal-backend.herokuapp.com/journals", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `${username}:${credentials.password}`,
-      },
-      body: JSON.stringify(newJournals)
-    })
-      .then(handleErrors)
-      .catch((error) => {
-        setError(error.message);
-      })
-  };
-
-  const addJournal = (e) => {
-    e.preventDefault();
-    if (!title || !content || !date) return;
-    const newJournal = { title: title, content: content, date: date };
-    const newJournals = [...journals, newJournal];
-    setJournals(newJournals);
-    setTitle("");
-    setContent("");
-    setDate("");
-    post(newJournals);
-  }
-
   const getJournals = () => {
     return journals;
   }
@@ -64,8 +35,8 @@ function Journals() {
 
   return (
     <div id="journal-div">
-      {<NewPost />}
-      {getJournals().map((journal) => (
+      {currentMenu === "new" && <NewPost />}
+      {currentMenu === "recent" && getJournals().map((journal) => (
         <div className="journal" key={getKey}>
           <h2>{journal.title}</h2>
           <p>{journal.content}</p>

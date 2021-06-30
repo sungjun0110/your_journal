@@ -9,7 +9,7 @@ import Sidebar from './components/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 export const CredentialsContext = React.createContext();
-export const CurrentMenu = React.createContext();
+export const CurrentMenuContext = React.createContext();
 
 function App() {
   const credentialsState = useState(null);
@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <CredentialsContext.Provider value={credentialsState}>
-        <CurrentMenu.Provider value={currentMenu}>
+        <CurrentMenuContext.Provider value={currentMenu}>
           <Router>
               <Switch>
                 <Route path="/" exact>
@@ -34,7 +34,7 @@ function App() {
           </Router>
 
           <Sidebar />
-        </CurrentMenu.Provider>
+        </CurrentMenuContext.Provider>
       </CredentialsContext.Provider>
     </div>
   );

@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './Sidebar.css'
 import HambergerMenu from './SidebarIcon'
+import { CurrentMenuContext } from '../App'
 
 function Sidebar() {
   const [isClicked, setIsClicked] = useState(false);
-  const [currentMenu, setCurrentMenu] = useState("recent");
+  const [currentMenu, setCurrentMenu] = useContext(CurrentMenuContext);
 
   const buttonHandler = (menu) => {
     setIsClicked(false)
