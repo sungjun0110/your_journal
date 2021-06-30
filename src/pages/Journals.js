@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { CredentialsContext } from '../App';
 import './Journals.css';
 import { handleErrors } from './Login';
+import NewPost from '../components/NewPost';
 
 function Journals() {
   const [journals, setJournals] = useState([]);
@@ -63,17 +64,7 @@ function Journals() {
 
   return (
     <div id="journal-div">
-      <form id="journal-form" onSubmit={addJournal}>
-        <label htmlFor="title-input">Title:</label>
-        <input id="title-input" type="text" onChange={(e) => setTitle(e.target.value)} />
-        <br />
-        <label htmlFor="content-input">Content:</label>
-        <textarea id="content-input" type="text" onChange={(e) => setContent(e.target.value)} />
-        <br />
-        <input id="date-input" type="date" onChange={(e) => setDate(e.target.value)}></input>
-        <br />
-        <button id="save-btn" type="submit">Save</button>
-      </form>
+      {<NewPost />}
       {getJournals().map((journal) => (
         <div className="journal" key={getKey}>
           <h2>{journal.title}</h2>
