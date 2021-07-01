@@ -33,6 +33,10 @@ function Journals() {
     return key;
   }
 
+  const deleteJournal = () => {
+
+  }
+
   return (
     <div id="journal-div">
       {currentMenu === "new" && <NewPost />}

@@ -20,7 +20,9 @@
   opacity: 1;
   z-index: 1;
 }
-
+#sidebar button {
+  font-size: 1rem;
+}
 #hamburger {
   position: absolute;
   width: 200px;
@@ -39,4 +41,11 @@
 
 #menuList button {
   width: 100%;
+}
+
+#logout {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(0,0,0,0);
+  border: none;
 }

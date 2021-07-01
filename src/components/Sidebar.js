@@ -2,14 +2,22 @@ import React, { useState, useContext } from 'react'
 import './Sidebar.css'
 import HambergerMenu from './SidebarIcon'
 import { CurrentMenuContext } from '../App'
+import { CredentialsContext } from '../App';
+
+import { IoIosLogOut } from 'react-icons/io'
 
 function Sidebar() {
   const [isClicked, setIsClicked] = useState(false);
+  const [credentials, setCredentials] = useContext(CredentialsContext);
   const [currentMenu, setCurrentMenu] = useContext(CurrentMenuContext);
 
   const buttonHandler = (menu) => {
     setIsClicked(false)
     setCurrentMenu(menu)
+  }
+
+  const logout = () => {
+    setCredentials(null);
   }
 
   return (
@@ -24,6 +32,7 @@ function Sidebar() {
         <div id="menuList">
           <button onClick={() => buttonHandler("new")}>New Post</button>
           <button onClick={() => buttonHandler("recent")}>Recent Posts</button>
+          {credentials && <button id="logout" onClick={logout}><IoIosLogOut size="1rem" /> Logout</button>}
         </div>
       </nav>
     </div>

@@ -1,21 +1,35 @@
-
 label {
-  display: inline-block;
-  vertical-align: top;
+  display: block;
   width: 100px;
-  text-align: left;
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 1rem auto;
 }
-
+input, textarea {
+  padding: 1rem;
+  font-size: 1.1rem;
+}
 #title-input {
-  width: 300px;
+  max-width: 100px;
+  min-width: 800px;
   border: 1px solid black;
 }
-
 #content-input {
-  width: 300px;
-  height: 200px;
+  max-width: 100px;
+  min-width: 800px;
   border: 1px solid black;
+  min-height: 400px;
 }
 #date-input {
   border: 1px solid black;
+  width: 300px;
+  margin: 1rem auto;
+}
+#save-btn {
+  font-size: 2rem;
+  background-color: rgba(0,0,0,0);
+  border: none;
+}
+#save-btn:hover {
+  color: orange;
 }
