@@ -22,7 +22,7 @@ function Journals() {
     })
     .then((response) => response.json())
     .then((journals) => setJournals(journals));
-  }, [])
+  }, [journals])
 
   const getJournals = () => {
     return journals;
@@ -33,9 +33,32 @@ function Journals() {
     return key;
   }
 
-  const deleteJournal = () => {
-
+  const deleteJournal = (id) => {
+    let temp = journals;
+    for (let i = 0; i < temp.length; i++) {
+      if ( temp[i]._id === id ) {
+        temp.splice(i, 1);
+        i--;
+      }
+    }
+    setJournals(temp);
+    post(journals);
   }
+
+  const post = (newJournals) => {
+    fetch("https://urjournal-backend.herokuapp.com/journals", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `${username}:${credentials.password}`,
+      },
+      body: JSON.stringify(newJournals)
+    })
+      .then(handleErrors)
+      .catch((error) => {
+        setError(error.message);
+      })
+  };
 
   return (
     <div id="journal-div">
@@ -46,7 +69,7 @@ function Journals() {
           <p>{journal.content}</p>
           <div className="journal-btns">
             <button>Edit</button>
-            <button>Delete</button>
+            <button onClick={() => deleteJournal(journal._id)}>Delete</button>
           </div>
         </div>
       ))}
