@@ -10,9 +10,12 @@ function Journals() {
   const [currentMenu,] = useContext(CurrentMenuContext);
   const [username,] = useState(credentials.username);
   const [error, setError] = useState("");
-  const [key, setKey] = useState(0);
 
   useEffect(() => {
+    getJouranls();
+  }, [])
+
+  const getJouranls = () => {
     fetch("https://urjournal-backend.herokuapp.com/journals", {
       method: "GET",
       headers: {
@@ -22,15 +25,10 @@ function Journals() {
     })
     .then((response) => response.json())
     .then((journals) => setJournals(journals));
-  }, [journals])
-
-  const getJournals = () => {
-    return journals;
   }
 
-  const getKey = () => {
-    setKey(key+1);
-    return key;
+  const editJournal = (id) => {
+
   }
 
   const deleteJournal = (id) => {
@@ -42,19 +40,23 @@ function Journals() {
       }
     }
     setJournals(temp);
-    post(journals);
+    deleteOne(id);
+    getJouranls();
   }
 
-  const post = (newJournals) => {
-    fetch("https://urjournal-backend.herokuapp.com/journals", {
-      method: "POST",
+  const deleteOne = (id) => {
+    fetch("http://localhost:8001/journals", {
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `${username}:${credentials.password}`,
+        "id": id,
       },
-      body: JSON.stringify(newJournals)
     })
       .then(handleErrors)
+      .then((journals) => {
+        setJournals(journals);
+      })
       .catch((error) => {
         setError(error.message);
       })
@@ -63,8 +65,8 @@ function Journals() {
   return (
     <div id="journal-div">
       {currentMenu === "new" && <NewPost />}
-      {currentMenu === "recent" && getJournals().map((journal) => (
-        <div className="journal" key={getKey}>
+      {currentMenu === "recent" && journals.map((journal) => (
+        <div className="journal" key={journal._id}>
           <h2>{journal.title}</h2>
           <p>{journal.content}</p>
           <div className="journal-btns">
