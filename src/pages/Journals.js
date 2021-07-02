@@ -59,7 +59,7 @@ function Journals() {
   }
 
   const deleteOne = (id) => {
-    fetch("http://localhost:8001/journals", {
+    fetch("https://urjournal-backend.herokuapp.com/journals", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

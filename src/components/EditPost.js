@@ -16,7 +16,7 @@ function EditPost( props ) {
   }, []);
 
   const put = (newJournal) => {
-    fetch("http://localhost:8001/journals", {
+    fetch("https://urjournal-backend.herokuapp.com/journals", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
