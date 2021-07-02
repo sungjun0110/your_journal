@@ -1,11 +1,12 @@
-label {
+#journal-form label {
   display: block;
+  font-weight: bold;
   width: 100px;
   font-size: 1.2rem;
   text-align: center;
   margin: 1rem auto;
 }
-input, textarea {
+#journal-form input, #journal-form textarea {
   padding: 1rem;
   font-size: 1.1rem;
 }

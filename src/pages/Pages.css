@@ -11,5 +11,10 @@
   margin-right: auto;
 }
 #id-form {
-  width: 200px;
+  position: relative;
+  margin: 0 auto;
+}
+#id-form input {
+  padding: 1rem;
+  margin-bottom: .5rem;
 }

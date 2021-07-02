@@ -42,9 +42,9 @@ function NewPost( props ) {
   return (
     <form id="journal-form" onSubmit={addJournal}>
       <label htmlFor="title-input">Title</label>
-      <input id="title-input" type="text" onChange={(e) => setTitle(e.target.value)} />
+      <input id="title-input" type="text" onChange={(e) => setTitle(e.target.value)} value={title}/>
       <label htmlFor="content-input">Content</label>
-      <textarea id="content-input" type="text" onChange={(e) => setContent(e.target.value)} />
+      <textarea id="content-input" type="text" onChange={(e) => setContent(e.target.value)} value={content} />
       <br />
       <input id="date-input" type="date" onChange={(e) => setDate(e.target.value)} />
       <br />
