@@ -5,12 +5,20 @@
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  padding: 2rem 1rem;
+}
+.journal h2 {
+  margin-top: 0;
 }
 .journal-btns {
   position: absolute;
   display: flex;
   flex-direction: row;
-  top: 0;
+  bottom: 8px;
   right: 10px;
   height: 30px;
   width: 80px;

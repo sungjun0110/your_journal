@@ -1,5 +1,5 @@
 #sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 200px;
   height: 100vh;
@@ -18,18 +18,18 @@
   transform: translateX(0);
   backdrop-filter: blur(5px);
   opacity: 1;
-  z-index: 1;
+  z-index: 1000;
 }
 #sidebar button {
   font-size: 1rem;
 }
 #hamburger {
-  position: absolute;
+  position: fixed;
   width: 200px;
   top: 3px;
   left: 155px;
   transition: all 0.5s ease-in-out;
-  z-index: 100;
+  z-index: 1001;
   transform: translateX(-150px);
 }
 #hamburger.clicked {
