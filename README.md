@@ -10,7 +10,7 @@ React, MongoDB, Express, Node.js
 <br>Back-end Repository: https://github.com/sungjun0110/tinder-clone-backend
 
 ## Todo
-- [ ] Add Udate and Delete Endpoints
+- [x] Add Udate and Delete Endpoints
 - [ ] Update Sidebar Menu
 - [ ] Update
 
