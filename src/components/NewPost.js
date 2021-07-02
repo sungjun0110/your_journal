@@ -9,7 +9,7 @@ function NewPost( props ) {
   const [date, setDate] = useState("");
   const [credentials,] = useContext(CredentialsContext);
   const [username,] = useState(credentials.username);
-  const [error, setError] = useState("");
+  const [, setError] = useState("");
 
   const post = (newJournals) => {
     fetch("https://urjournal-backend.herokuapp.com/journals", {

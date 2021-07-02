@@ -8,7 +8,7 @@ function EditPost( props ) {
   const [content, setContent] = useState("");
   const [credentials,] = useContext(CredentialsContext);
   const [username,] = useState(credentials.username);
-  const [error, setError] = useState("");
+  const [, setError] = useState("");
 
   useEffect (() => {
     setTitle(props.title);
