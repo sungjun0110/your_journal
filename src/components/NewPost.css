@@ -10,13 +10,13 @@ input, textarea {
   font-size: 1.1rem;
 }
 #title-input {
-  max-width: 100px;
-  min-width: 800px;
+  max-width: 1000px;
+  min-width: 300px;
   border: 1px solid black;
 }
 #content-input {
-  max-width: 100px;
-  min-width: 800px;
+  max-width: 1000px;
+  min-width: 300px;
   border: 1px solid black;
   min-height: 400px;
 }
