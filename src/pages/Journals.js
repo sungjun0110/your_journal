@@ -3,19 +3,29 @@ import { CredentialsContext, CurrentMenuContext } from '../App';
 import './Journals.css';
 import { handleErrors } from './Login';
 import NewPost from '../components/NewPost';
+import EditPost from '../components/EditPost';
 
 function Journals() {
   const [journals, setJournals] = useState([]);
+  const [update, setUpdate] = useState(false);
   const [credentials,] = useContext(CredentialsContext);
   const [currentMenu,] = useContext(CurrentMenuContext);
   const [username,] = useState(credentials.username);
+  const [journalForEdit, setJournalForEdit] = useState('');
   const [error, setError] = useState("");
 
   useEffect(() => {
-    getJouranls();
+    getJournals();
   }, [])
 
-  const getJouranls = () => {
+  useEffect(() => {
+    if (update === true) {
+      getJournals();
+      setUpdate(false);
+    }
+  }, [update])
+
+  const getJournals = () => {
     fetch("https://urjournal-backend.herokuapp.com/journals", {
       method: "GET",
       headers: {
@@ -28,20 +38,24 @@ function Journals() {
   }
 
   const editJournal = (id) => {
-
+    setJournalForEdit(id);
   }
 
   const deleteJournal = (id) => {
-    let temp = journals;
-    for (let i = 0; i < temp.length; i++) {
-      if ( temp[i]._id === id ) {
-        temp.splice(i, 1);
-        i--;
+    if (window.confirm("Are you really going to delete this journal?")){
+      let temp = journals;
+      for (let i = 0; i < temp.length; i++) {
+        if ( temp[i]._id === id ) {
+          temp.splice(i, 1);
+          i--;
+        }
       }
+      setJournals(temp);
+      deleteOne(id);
+      getJournals();
+    } else {
+      return;
     }
-    setJournals(temp);
-    deleteOne(id);
-    getJouranls();
   }
 
   const deleteOne = (id) => {
@@ -56,6 +70,7 @@ function Journals() {
       .then(handleErrors)
       .then((journals) => {
         setJournals(journals);
+        setUpdate(true);
       })
       .catch((error) => {
         setError(error.message);
@@ -64,17 +79,34 @@ function Journals() {
 
   return (
     <div id="journal-div">
-      {currentMenu === "new" && <NewPost />}
-      {currentMenu === "recent" && journals.map((journal) => (
-        <div className="journal" key={journal._id}>
-          <h2>{journal.title}</h2>
-          <p>{journal.content}</p>
-          <div className="journal-btns">
-            <button>Edit</button>
-            <button onClick={() => deleteJournal(journal._id)}>Delete</button>
-          </div>
-        </div>
-      ))}
+      {currentMenu === "new" && 
+        <NewPost 
+          setJournals={setJournals} 
+          journals={journals}
+          setUpdate={setUpdate} />
+      }
+      {currentMenu === "recent" && journals.map((journal) => {
+        if (journalForEdit === journal._id) {
+          return <EditPost 
+                    setJournalForEdit={setJournalForEdit}
+                    setUpdate={setUpdate} 
+                    title={journal.title}
+                    content={journal.content}
+                    id={journal._id}
+                  />
+        } else {
+          return (
+            <div className="journal" key={journal._id}>
+              <h2>{journal.title}</h2>
+              <p>{journal.content}</p>
+              <div className="journal-btns">
+                <button onClick={() => editJournal(journal._id)}>Edit</button>
+                <button onClick={() => deleteJournal(journal._id)}>Delete</button>
+              </div>
+            </div>
+          )
+        }
+      })}
     </div>
   )
 }

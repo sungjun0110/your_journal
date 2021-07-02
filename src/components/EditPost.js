@@ -3,22 +3,26 @@ import { CredentialsContext } from '../App';
 import { handleErrors } from '../pages/Login';
 import './NewPost.css';
 
-function NewPost( props ) {
+function EditPost( props ) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [date, setDate] = useState("");
   const [credentials,] = useContext(CredentialsContext);
   const [username,] = useState(credentials.username);
   const [error, setError] = useState("");
 
-  const post = (newJournals) => {
-    fetch("https://urjournal-backend.herokuapp.com/journals", {
-      method: "POST",
+  useEffect (() => {
+    setTitle(props.title);
+    setContent(props.content);
+  }, []);
+
+  const put = (newJournal) => {
+    fetch("http://localhost:8001/journals", {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `${username}:${credentials.password}`,
       },
-      body: JSON.stringify(newJournals)
+      body: JSON.stringify(newJournal)
     })
       .then(handleErrors)
       .catch((error) => {
@@ -26,31 +30,28 @@ function NewPost( props ) {
       })
   };
   
-  const addJournal = (e) => {
+  const editJournal = (e) => {
     e.preventDefault();
-    if (!title || !content || !date) return;
-    const newJournal = { title: title, content: content, date: date };
-    const newJournals = [...props.journals, newJournal];
-    props.setJournals(newJournals);
+    if (!title || !content) return;
+    const newJournal = { id: props.id, title: title, content: content };
+    put(newJournal);
     setTitle("");
     setContent("");
-    setDate("");
-    post(newJournals);
+    props.setJournalForEdit('');
     setTimeout(() => props.setUpdate(true), 1000);
   }
 
   return (
-    <form id="journal-form" onSubmit={addJournal}>
+    <form id="journal-form" onSubmit={editJournal} key={props.id}>
       <label htmlFor="title-input">Title</label>
-      <input id="title-input" type="text" onChange={(e) => setTitle(e.target.value)} />
+      <input id="title-input" type="text" onChange={(e) => setTitle(e.target.value)} value={title} />
       <label htmlFor="content-input">Content</label>
-      <textarea id="content-input" type="text" onChange={(e) => setContent(e.target.value)} />
-      <br />
-      <input id="date-input" type="date" onChange={(e) => setDate(e.target.value)} />
+      <textarea id="content-input" type="text" onChange={(e) => setContent(e.target.value)} value={content} />
       <br />
       <button id="save-btn" type="submit">Save</button>
+      <button id="cancel-btn" onClick={() => props.setJournalForEdit('')}>Cancel</button>
     </form>
   )
 }
 
-export default NewPost
+export default EditPost
