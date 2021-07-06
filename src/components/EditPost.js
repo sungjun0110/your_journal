@@ -33,7 +33,7 @@ function EditPost( props ) {
   const editJournal = (e) => {
     e.preventDefault();
     if (!title || !content) return;
-    const newJournal = { id: props.id, title: title, content: content };
+    const newJournal = { id: props.id, title: title, content: content};
     put(newJournal);
     setTitle("");
     setContent("");

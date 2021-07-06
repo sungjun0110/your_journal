@@ -4,6 +4,7 @@ import './Journals.css';
 import { handleErrors } from './Login';
 import NewPost from '../components/NewPost';
 import EditPost from '../components/EditPost';
+import parse from 'html-react-parser';
 
 function Journals() {
   const [journals, setJournals] = useState([]);
@@ -86,6 +87,7 @@ function Journals() {
           setUpdate={setUpdate} />
       }
       {currentMenu === "recent" && journals.map((journal) => {
+        console.log(journal.content);
         if (journalForEdit === journal._id) {
           return <EditPost 
                     setJournalForEdit={setJournalForEdit}
@@ -98,7 +100,7 @@ function Journals() {
           return (
             <div className="journal" key={journal._id}>
               <h2>{journal.title}</h2>
-              <p>{journal.content}</p>
+              <p>{parse(journal.content.replaceAll('\n', "<br />"))}</p>
               <div className="journal-btns">
                 <button onClick={() => editJournal(journal._id)}>Edit</button>
                 <button onClick={() => deleteJournal(journal._id)}>Delete</button>

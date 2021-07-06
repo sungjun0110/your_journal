@@ -14,6 +14,9 @@
 .journal h2 {
   margin-top: 0;
 }
+.journal p {
+  text-align: left;
+}
 .journal-btns {
   position: absolute;
   display: flex;
