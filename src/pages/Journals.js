@@ -86,7 +86,7 @@ function Journals() {
           journals={journals}
           setUpdate={setUpdate} />
       }
-      {currentMenu === "recent" && journals.map((journal) => {
+      {currentMenu === "recent" && journals.reverse().map((journal) => {
         if (journalForEdit === journal._id) {
           return <EditPost 
                     setJournalForEdit={setJournalForEdit}
