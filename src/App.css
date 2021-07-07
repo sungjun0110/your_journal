@@ -6,5 +6,6 @@
 
 :root {
   --background-color: #f0f2f5;
+  --border-color: #ddd;
   background-color: var(--background-color);
 }

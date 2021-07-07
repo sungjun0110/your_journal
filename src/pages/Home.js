@@ -11,7 +11,7 @@ function Home() {
   return (
     <div id="page-div">
       {credentials? <h1>{credentials && credentials.username}'s Journal</h1> : <h1>Welcome!</h1> }
-      {!credentials && <h3>Try <br />id: test<br />password: test</h3>}
+      {!credentials && <h3>Try with a test account<br />id: test<br />password: test</h3>}
       {!credentials && <Link to='/register'>Register</Link>}
       {!credentials && <Link to='/login'>Login</Link>}
       {credentials && <Journals />}
