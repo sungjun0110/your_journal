@@ -87,7 +87,6 @@ function Journals() {
           setUpdate={setUpdate} />
       }
       {currentMenu === "recent" && journals.map((journal) => {
-        console.log(journal.content);
         if (journalForEdit === journal._id) {
           return <EditPost 
                     setJournalForEdit={setJournalForEdit}
