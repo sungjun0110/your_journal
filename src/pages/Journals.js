@@ -78,6 +78,36 @@ function Journals() {
       })
   };
 
+  function mapJournals () {
+    let code = [];
+    journals.reverse().map((journal) => {
+      if (journalForEdit === journal._id) {
+        code.push(
+          <EditPost 
+            setJournalForEdit={setJournalForEdit}
+            setUpdate={setUpdate} 
+            title={journal.title}
+            content={journal.content}
+            id={journal._id}
+          />
+        );
+      } else {
+        code.push(
+          <div className="journal" key={journal._id}>
+            <h2>{journal.title}</h2>
+            <p>{parse(journal.content.replaceAll('\n', "<br />"))}</p>
+            <div className="journal-btns">
+              <button onClick={() => editJournal(journal._id)}>Edit</button>
+              <button onClick={() => deleteJournal(journal._id)}>Delete</button>
+            </div>
+          </div>
+        );
+      }
+    });
+    journals.reverse();
+    return code;
+  }
+
   return (
     <div id="journal-div">
       {currentMenu === "new" && 
@@ -86,28 +116,7 @@ function Journals() {
           journals={journals}
           setUpdate={setUpdate} />
       }
-      {currentMenu === "recent" && journals.reverse().map((journal) => {
-        if (journalForEdit === journal._id) {
-          return <EditPost 
-                    setJournalForEdit={setJournalForEdit}
-                    setUpdate={setUpdate} 
-                    title={journal.title}
-                    content={journal.content}
-                    id={journal._id}
-                  />
-        } else {
-          return (
-            <div className="journal" key={journal._id}>
-              <h2>{journal.title}</h2>
-              <p>{parse(journal.content.replaceAll('\n', "<br />"))}</p>
-              <div className="journal-btns">
-                <button onClick={() => editJournal(journal._id)}>Edit</button>
-                <button onClick={() => deleteJournal(journal._id)}>Delete</button>
-              </div>
-            </div>
-          )
-        }
-      })}
+      {currentMenu === "recent" && mapJournals()}
     </div>
   )
 }
