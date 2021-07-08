@@ -35,13 +35,16 @@
 #downArrowBtn.clicked {
   background-color: #ddd;
   box-shadow: inset 0 0 15px rgb(160, 255, 96, 1);
-
+}
+#menuList {
+  padding: 5px;
 }
 #menuList button {
   width: 100%;
   font-size: 1rem;
   background-color: rgba(0,0,0,0);
   border: none;
+  border-radius: 5px;
   padding: 1rem;
 }
 #menuList button:hover {
