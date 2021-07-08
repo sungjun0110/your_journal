@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react'
 import './Sidebar.css'
-import HambergerMenu from './SidebarIcon'
 import { CurrentMenuContext } from '../App'
 import { CredentialsContext } from '../App';
 
+import { IconContext } from 'react-icons';
+import { TiArrowSortedDown } from 'react-icons/ti'
 import { IoIosLogOut } from 'react-icons/io'
 
 function Sidebar() {
@@ -22,11 +23,16 @@ function Sidebar() {
 
   return (
     <div>
-      <div id="hamburger" className={isClicked? "clicked" : null}>
-        <HambergerMenu 
-          setIsClicked={setIsClicked} 
-          isClicked={isClicked} 
-        />
+      <div 
+        id="downArrowBtn" 
+        className={isClicked? "clicked" : null} 
+        onClick={() => setIsClicked(!isClicked)}
+      >
+        <IconContext.Provider 
+          value={{size: '1.5rem', className: isClicked? 'clicked': null}} 
+        >
+          <TiArrowSortedDown />
+        </IconContext.Provider>
       </div>
       <nav  id="sidebar" className={isClicked? "clicked" : null}>
         <div id="menuList">

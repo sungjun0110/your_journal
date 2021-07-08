@@ -23,17 +23,25 @@
 #sidebar button {
   font-size: 1rem;
 }
-#hamburger {
-  position: fixed;
-  width: 200px;
-  top: 3px;
-  left: 155px;
-  transition: all 0.5s ease-in-out;
-  z-index: 1001;
-  transform: translateX(-150px);
+#downArrowBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 2px;
+  left: 10vw;
+  z-index: 10000;
+  background-color: #ddd;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 15px rgba(247, 198, 107, 0);
+  transition: box-shadow ease-in-out 0.5s;
 }
-#hamburger.clicked {
-  transform: translateX(0px);
+#downArrowBtn.clicked {
+  background-color: #ddd;
+  box-shadow: inset 0 0 15px rgb(160, 255, 96, 1);
+
 }
 #menuList {
   padding-top: 100px;
