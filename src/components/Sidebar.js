@@ -34,21 +34,18 @@ function Sidebar() {
           <TiArrowSortedDown />
         </IconContext.Provider>
       </div>
-      {credentials ? 
-        <nav  id="sidebar" className={isClicked? "clicked" : null}>
-          <div id="menuList">
-            <button onClick={() => buttonHandler("new")}>New Post</button>
-            <button onClick={() => buttonHandler("recent")}>Recent Posts</button>
-            <button id="logout" onClick={logout}><IoIosLogOut size="1rem" /> Logout</button>
-          </div>
-        </nav>
-        :
-        <nav  id="sidebar" className={isClicked? "clicked" : null}>
-          <div id="menuList">
-            <button>Please log in</button>
-          </div>
-        </nav>
-      }
+      <nav  id="sidebar" className={isClicked? "clicked" : null}>
+        <div id="menuList">
+          {credentials ? 
+            <>
+              <button onClick={() => buttonHandler("new")}>New Post</button>
+              <button onClick={() => buttonHandler("recent")}>Recent Posts</button>
+              <button id="logout" onClick={logout}><IoIosLogOut size="1rem" /> Logout</button>
+            </> :
+            <button>Please log in</button> 
+          }
+        </div>
+      </nav>
     </div>
   )
 }
