@@ -1,56 +1,52 @@
 #sidebar {
   position: fixed;
-  top: 0;
-  width: 200px;
-  height: 100vh;
-  box-shadow: 10px 10px 20px rgba(0,0,0,0);
-  background-color: rgba(250, 160, 82, 0.644);
-  opacity: 0;
-  transform: translatex(-150px);
-  transition: all 0.5s ease-in-out;
-  backdrop-filter: blur(0px);
-  z-index: -1;
+  display: none;
+  top: 48px;
+  left: 5px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 4px 4px 10px 4px rgba(190, 190, 190, 0.61);
+  z-index: 10000;
 }
 
 #sidebar.clicked {
-  box-shadow: 10px 0px 25px rgba(0,0,0,0.5);
-  background-color: rgba(250, 160, 82, 0.644);
-  transform: translateX(0);
-  backdrop-filter: blur(5px);
-  opacity: 1;
-  z-index: 1000;
+  display: block;
 }
-#sidebar button {
-  font-size: 1rem;
-}
+
 #downArrowBtn {
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 2px;
-  left: 10vw;
+  top: 5px;
+  left: 5px;
   z-index: 10000;
   background-color: #ddd;
-  width: 46px;
-  height: 46px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   box-shadow: inset 0 0 15px rgba(247, 198, 107, 0);
   transition: box-shadow ease-in-out 0.5s;
+  transition: background-color ease-in-out .2s;
+}
+#downArrowBtn:hover {
+  background-color: #ccc;
 }
 #downArrowBtn.clicked {
   background-color: #ddd;
   box-shadow: inset 0 0 15px rgb(160, 255, 96, 1);
 
 }
-#menuList {
-  padding-top: 100px;
-}
-
 #menuList button {
   width: 100%;
+  font-size: 1rem;
+  background-color: rgba(0,0,0,0);
+  border: none;
+  padding: 1rem;
 }
-
+#menuList button:hover {
+  background-color: var(--background-color);
+}
 #logout {
   width: 60px;
   height: 60px;
